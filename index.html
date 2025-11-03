@@ -7,9 +7,9 @@
     <style>
         .hero-section{
           background-image: url('photo_brainstorming/28ebbccde6cc192a1cfadf20a16ea922-Photoroom.png');
-          background-size: cover;
+          background-size: 100% auto; 
           background-repeat: no-repeat;
-          display: block;
+          background-position: center bottom; 
           height: 100vh;
           width: 100%;
           position: relative;
@@ -24,6 +24,10 @@
             background-color: #12442C;
             height: 100vh;
             width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 2rem;
         }
         .gradient-overlay{
             position: absolute;
@@ -95,7 +99,26 @@
             background-color: rgb(255, 255, 255);
         }
 
+        .intro-title {
+            background-color: #0b2619; 
+            box-shadow: 3px 3px 5px rgb(28, 28, 28);
+            border-radius: 5px;
+            padding: 2rem 3rem;
+            text-align: center;
+            max-width: 600px;
+            width: 80%;
+        }
 
+        .intro-title-text {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        .card{
+            height:20px;
+            width: 20px;
+        }
     
     </style>
 </head>
@@ -115,11 +138,19 @@
 
     <section class="hero-section">
         <div class="gradient-overlay"></div>
-
     </section>
 
     <section class="intro-section">
-        <div></div>
+        <div class="intro-title">
+            <h2 class="intro-title-text">
+                About The Game
+            </h2>
+        </div>
+        <div class="card-vid-container">
+            <div class="card">
+                <img src="photo_brainstorming/5f52638033c692f67744ad517b5c5b04-removebg-preview.png" alt="Solitaire Icon" class="logo-icon">
+            </div>        
+        </div>
     </section>
 </body>
 </html>
