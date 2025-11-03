@@ -22,12 +22,12 @@
         }
         .intro-section{
             background-color: #12442C;
-            height: 100vh;
+            min-height: 100vh;
             width: 100%;
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 2rem;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
         }
         .gradient-overlay{
             position: absolute;
@@ -107,6 +107,7 @@
             text-align: center;
             max-width: 600px;
             width: 80%;
+            margin-bottom: 3rem;
         }
 
         .intro-title-text {
@@ -115,9 +116,81 @@
             font-weight: bold;
             margin: 0;
         }
-        .card{
-            height:20px;
-            width: 20px;
+
+        .card-vid-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch; 
+            gap: 3rem;
+            max-width: 1200px;
+            width: 90%;
+            flex-wrap: wrap;
+        }
+
+        .text-card {
+            background-color:  rgba(255, 255, 255, 0.171);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .text-card h3 {
+            color: #a8e6a3;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .text-card p {
+            color: #ffffff;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+            margin: 0;
+        }
+
+        .video-card {
+            background-color:  rgba(255, 255, 255, 0.171);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card h3 {
+            color: #a8e6a3;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            flex-grow: 1;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     
     </style>
@@ -147,9 +220,23 @@
             </h2>
         </div>
         <div class="card-vid-container">
-            <div class="card">
-                <img src="photo_brainstorming/5f52638033c692f67744ad517b5c5b04-removebg-preview.png" alt="Solitaire Icon" class="logo-icon">
-            </div>        
+            <!-- Text Card -->
+            <div class="text-card">
+                <h3>Discover the World's Favorite Card Game</h3>
+                <p>Solitaire is the timeless single-player card game that has captivated millions for generations. Also known as Patience or Klondike, this classic game challenges your strategic thinking while providing a peaceful, engaging experience.</p>
+            </div>
+            
+            <!-- Video Card -->
+            <div class="video-card">
+                <h3>How to Play</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/7HTdpImHkSI" 
+                            title="How To Play Solitaire" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
         </div>
     </section>
 </body>
