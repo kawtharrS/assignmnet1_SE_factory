@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solitaire Game</title>
+    <style>
+        .hero-section{
+          background-image: url('photo_brainstorming/28ebbccde6cc192a1cfadf20a16ea922-Photoroom.png');
+          background-size: cover;
+          background-repeat: no-repeat;
+          display: block;
+          height: 100vh;
+          width: 100%;
+          position: relative;
+          background-color: #12442C;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .intro-section{
+            background-color: #12442C;
+            height: 100vh;
+            width: 100%;
+        }
+        .gradient-overlay{
+            position: absolute;
+            top: 0; 
+            left: 0;
+            background: linear-gradient(to bottom, 
+            rgba(0, 0, 0, 0.7) 0%, 
+            rgba(0, 0, 0, 0.5) 50%, 
+            rgba(0, 0, 0, 0) 100%);
+            z-index: 10;
+            height: 500px;
+            width: 100%;
+        }
+       
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 30;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: rgba(255, 255, 255, 0.171); 
+            border-bottom: 3px solid rgb(255, 255, 255) ;
+            border-radius:5px;
+            margin:30px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            color: #fffefe;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+            font-weight:bold;
+        }
+
+        .nav-links li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.25rem;
+            
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .nav-links li a:hover {
+            color: #4c674a;
+            background-color: rgb(255, 255, 255);
+        }
+
+
+    
+    </style>
+</head>
+<body>
+     <nav class="navbar">
+        <div class="logo-container">
+            <img src="photo_brainstorming/poker-cards (2).png" alt="Solitaire Icon" class="logo-icon">
+            <div class="logo-text">Solitaire</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Leader Board</a></li>
+            <li><a href="#">Play</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <div class="gradient-overlay"></div>
+
+    </section>
+
+    <section class="intro-section">
+        <div></div>
+    </section>
+</body>
+</html>
