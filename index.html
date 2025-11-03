@@ -52,7 +52,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
-            background-color: rgba(255, 255, 255, 0.171); 
+            background-color: #12442c4b; 
             border-bottom: 3px solid rgb(255, 255, 255) ;
             border-radius:5px;
             margin:30px;
@@ -192,7 +192,209 @@
             height: 100%;
             border: none;
         }
-    
+        
+        .app-section{
+            background-color: #dfdede;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+        }
+        
+        .card-links-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch; 
+            gap: 3rem;
+            max-width: 1200px;
+            width: 90%;
+            flex-wrap: wrap;
+        }
+        
+        .app-title {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .app-title-text {
+            color: #12442C;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .download-card {
+            background-color: #39604D;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .download-card h3 {
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .download-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .store-button {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .store-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .store-button.apple {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        
+        .store-button.google {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        
+        .store-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 1rem;
+        }
+        
+        .store-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        
+        .store-text span:first-child {
+            font-size: 0.8rem;
+        }
+        
+        .store-text span:last-child {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .link-text-card {
+            background-color: #ffffff2c;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .link-text-card h3 {
+            color: #12442C;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .link-text-card p {
+            color: #4d4d4d;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+            margin: 0;
+        }
+    .footer {
+            background-color: #0b2619;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .footer-section {
+            margin-bottom: 1rem;
+        }
+
+        .footer h3 {
+            color: #a8e6a3;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            color: #ffffff;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0.5rem 0;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap:2.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: #a8e6a3;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #2d4a3a;
+            color: #a8e6a3;
+            font-size: 0.9rem;
+        }
+
+        
     </style>
 </head>
 <body>
@@ -220,13 +422,11 @@
             </h2>
         </div>
         <div class="card-vid-container">
-            <!-- Text Card -->
             <div class="text-card">
                 <h3>Discover the World's Favorite Card Game</h3>
                 <p>Solitaire is the timeless single-player card game that has captivated millions for generations. Also known as Patience or Klondike, this classic game challenges your strategic thinking while providing a peaceful, engaging experience.</p>
             </div>
             
-            <!-- Video Card -->
             <div class="video-card">
                 <h3>How to Play</h3>
                 <div class="video-wrapper">
@@ -239,5 +439,75 @@
             </div>
         </div>
     </section>
+
+    <section class="app-section">
+        <div class="app-title">
+            <h2 class="app-title-text">
+                Download The Game
+            </h2>
+            <br><br>
+        </div>
+        <div class="card-links-container">
+            <div class="download-card">
+                <h3>Get the App</h3>
+                <div class="download-buttons">
+                    <a href="#" class="store-button apple">
+                        <img src="/photo_brainstorming/app-store (1).png" alt="Apple" class="store-icon">
+                        <div class="store-text">
+                            <span>Download on the</span>
+                            <span>App Store</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="store-button google">
+                        <img src="/photo_brainstorming/google-play.png" alt="Google Play" class="store-icon">
+                        <div class="store-text">
+                            <span>Get it on</span>
+                            <span>Google Play</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="link-text-card">
+                <h3>Play Anywhere, Anytime</h3>
+                <p>Take the classic Solitaire experience with you wherever you go! Our mobile app brings the timeless card game to your fingertips with smooth gameplay, daily challenges, and beautiful graphics. Available for both iOS and Android devices.</p>
+                <br>
+                <p><strong>Features:</strong><br>
+                • Smooth touch controls<br>
+                • Daily challenges & rewards<br>
+                • Multiple difficulty levels<br>
+                • Offline play available</p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>support@solitairegame.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Leader Board</a>
+                    <a href="#">Play</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Solitaire Game. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
