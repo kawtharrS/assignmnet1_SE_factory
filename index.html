@@ -53,9 +53,10 @@
             align-items: center;
             padding: 1rem 2rem;
             background-color: #12442c4b; 
-            border-bottom: 3px solid rgb(255, 255, 255) ;
-            border-radius:5px;
-            margin:30px;
+            border-bottom: 3px solid rgb(255, 255, 255);
+            border-radius: 5px;
+            margin: 30px;
+            backdrop-filter: blur(10px);
         }
 
         .logo-container {
@@ -81,14 +82,13 @@
             margin: 0;
             padding: 0;
             gap: 2rem;
-            font-weight:bold;
+            font-weight: bold;
         }
 
         .nav-links li a {
             color: #ffffff;
             text-decoration: none;
             font-size: 1.25rem;
-            
             transition: color 0.3s ease;
             padding: 0.5rem 1rem;
             border-radius: 4px;
@@ -97,6 +97,105 @@
         .nav-links li a:hover {
             color: #4c674a;
             background-color: rgb(255, 255, 255);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #ffffff;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                margin: 15px;
+                padding: 1rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #12442c;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                border-radius: 0 0 10px 10px;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links li a {
+                display: block;
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .logo-icon {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                margin: 10px;
+                padding: 0.8rem;
+            }
+
+            .logo-text {
+                font-size: 1.3rem;
+            }
+
+            .logo-icon {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
         }
 
         .intro-title {
@@ -403,10 +502,17 @@
             <img src="photo_brainstorming/poker-cards (2).png" alt="Solitaire Icon" class="logo-icon">
             <div class="logo-text">Solitaire</div>
         </div>
-        <ul class="nav-links">
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <ul class="nav-links" id="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Leader Board</a></li>
+            <li><a href="#">Leaderboard</a></li>
             <li><a href="#">Play</a></li>
         </ul>
     </nav>
@@ -474,10 +580,10 @@
                 <p>Take the classic Solitaire experience with you wherever you go! Our mobile app brings the timeless card game to your fingertips with smooth gameplay, daily challenges, and beautiful graphics. Available for both iOS and Android devices.</p>
                 <br>
                 <p><strong>Features:</strong><br>
-                • Smooth touch controls<br>
-                • Daily challenges & rewards<br>
-                • Multiple difficulty levels<br>
-                • Offline play available</p>
+                Smooth touch controls<br>
+                Daily challenges & rewards<br>
+                Multiple difficulty levels<br>
+                Offline play available</p>
             </div>
         </div>
     </section>
@@ -497,7 +603,7 @@
                 <div class="footer-links">
                     <a href="#">Home</a>
                     <a href="#">About</a>
-                    <a href="#">Leader Board</a>
+                    <a href="#">Leaderboard</a>
                     <a href="#">Play</a>
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
@@ -509,5 +615,30 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = document.querySelector('.navbar').contains(event.target);
+            if (!isClickInsideNav && navLinks.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
