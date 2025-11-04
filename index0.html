@@ -170,6 +170,112 @@
             text-align: center;
             margin: 0;
         }
+        .app-title h3{
+            text-align:center;
+            padding:1rem;
+            font-size:2.5rem;
+            color:#12442C;
+        }
+        .app-section{
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem ;
+            background-color: #DFDEDE;
+        }
+        .card-links-container{
+            display:flex;
+            justify-content: center;
+            align-items: stretch; 
+            gap: 3rem;
+            width: 90%;
+            flex-wrap: wrap;
+        }
+        .download-card{
+            background-color:  #39604D;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .download-card h3{
+            font-size:2rem;
+            font-weight:bold;
+            color:#fff;
+        }
+        .link-text-card{
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .download-buttons{
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 300px;
+        }
+        .store-button{
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .store-icon{
+            width: 40px;
+            height: 40px;
+            margin-right: 1rem;
+        }
+        .store-button {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .store-button.apple{
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .store-button.google {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .link-text-card h3{
+            font-size:2rem;
+            font-weight:bold;
+            color:#96c892;
+        }
+        .link-text-card p{
+            color: #2d2c2c;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -207,6 +313,44 @@
                     <iframe src="https://www.youtube.com/embed/7HTdpImHkSI" 
                             title="How To Play Solitaire"></iframe> 
                 </div>
+            </div>
+        </div>
+    </section>
+    <section class="app-section">
+        <div class="app-title">
+            <h3>Download the Game</h3>
+        </div>
+        <div class="card-links-container">
+            <div class="download-card">
+                <h3>Get the App</h3>
+                <div class="download-buttons">
+                    <a href="#" class="store-button apple">
+                        <img src="/photo_brainstorming/app-store (1).png" alt="Apple" class="store-icon">
+                        <div class="store-text">
+                            <span>Download on the</span>
+                            <span>App Store</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="store-button google">
+                        <img src="/photo_brainstorming/google-play.png" alt="Google Play" class="store-icon">
+                        <div class="store-text">
+                            <span>Get it on</span>
+                            <span>Google Play</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="link-text-card">
+                <h3>Play Anywhere, Anytime</h3>
+                <p>Take the classic Solitaire experience with you wherever you go! Our mobile app brings the timeless card game to your fingertips with smooth gameplay, daily challenges, and beautiful graphics. Available for both iOS and Android devices.</p>
+                <br>
+                <p><strong>Features:</strong><br>
+                Smooth touch controls<br>
+                Daily challenges & rewards<br>
+                Multiple difficulty levels<br>
+                Offline play available</p>
             </div>
         </div>
     </section>
