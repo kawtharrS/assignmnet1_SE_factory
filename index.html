@@ -5,278 +5,163 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solitaire Game</title>
     <style>
+   
+        * {
+            box-sizing: border-box;
+        }
+        
+        body{
+            margin:0;
+            background-color: #12442C;
+            font-family: Arial, sans-serif;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) 
+                     env(safe-area-inset-bottom) env(safe-area-inset-left);
+        }
+        
         .hero-section{
-          background-image: url('photo_brainstorming/28ebbccde6cc192a1cfadf20a16ea922-Photoroom.png');
-          background-size: 100% auto; 
+          background-image: url('/photo_brainstorming/28ebbccde6cc192a1cfadf20a16ea922-Photoroom.png');
+          background-size: cover; 
           background-repeat: no-repeat;
-          background-position: center bottom; 
+          background-position: center center; 
           height: 100vh;
           width: 100%;
           position: relative;
-          background-color: #12442C;
+          backdrop-filter: blur(10px);
         }
-        body{
+        
+        .gradient-overlay{
+            position:absolute;
+            top:0;
+            left:0;
+            background: linear-gradient(to bottom, 
+            rgba(0,0,0, 0.7)0%, 
+            rgba(0,0,0,0.4)50%,
+            rgba(0,0,0, 0)100%);
+            z-index:10;
+            width:100%;
+            height:500px;
+        }
+        
+        .navbar {
+            position:fixed;
+            display:flex;
+            z-index:30;
+            top:0;
+            left:0;
+            right:0;
+            background-color:#12442c4b;
+            border-bottom: 2px solid #fff;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            margin: 15px 15px;
+            backdrop-filter: blur(10px);
+            justify-content:space-between;
+            align-items:center;
+            flex-wrap: wrap;
+        }
+        
+        .logo-container{
+            display:flex;
+            align-items:center;
+            gap:0.5rem;
+        }
+        
+        .logo-image{
+            width: 50px;
+            height: 50px;
+        }
+        
+        .logo-text{
+            color:#fff;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight:bold;
+            padding:0;
+        }
+        
+        .nav-links{
+            list-style:none;
+            display:flex;
+            gap: clamp(1rem, 3vw, 3rem);
+            font-weight:bold;
+            font-size: clamp(1rem, 2vw, 1.25rem);
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
         }
-        .intro-section{
-            background-color: #12442C;
+        
+        .nav-links li a{
+            color:#fff;
+            text-decoration:none;
+            transition: color 0.3s ease;
+            padding:0.5rem 0.8rem;
+            border-radius:4px;
+            white-space: nowrap;
+        }
+
+        .nav-links li a:hover{
+            color: #4c674a;
+            background-color: rgb(255, 255, 255);
+        }
+        
+        .about-section{
             min-height: 100vh;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2rem 0;
-        }
-        .gradient-overlay{
-            position: absolute;
-            top: 0; 
-            left: 0;
-            background: linear-gradient(to bottom, 
-            rgba(0, 0, 0, 0.7) 0%, 
-            rgba(0, 0, 0, 0.5) 50%, 
-            rgba(0, 0, 0, 0) 100%);
-            z-index: 10;
-            height: 500px;
-            width: 100%;
-        }
-       
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 30;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background-color: #12442c4b; 
-            border-bottom: 3px solid rgb(255, 255, 255);
-            border-radius: 5px;
-            margin: 30px;
-            backdrop-filter: blur(10px);
+            padding: 2rem 1rem;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-        }
-
-        .logo-text {
-            color: #fffefe;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 2rem;
-            font-weight: bold;
-        }
-
-        .nav-links li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1.25rem;
-            transition: color 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-        }
-
-        .nav-links li a:hover {
-            color: #4c674a;
-            background-color: rgb(255, 255, 255);
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background-color: #ffffff;
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                margin: 15px;
-                padding: 1rem;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: #12442c;
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                gap: 1rem;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-                border-radius: 0 0 10px 10px;
-            }
-
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-            }
-
-            .nav-links li a {
-                display: block;
-                padding: 1rem 2rem;
-                font-size: 1.1rem;
-            }
-
-            .logo-text {
-                font-size: 1.5rem;
-            }
-
-            .logo-icon {
-                width: 30px;
-                height: 30px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .navbar {
-                margin: 10px;
-                padding: 0.8rem;
-            }
-
-            .logo-text {
-                font-size: 1.3rem;
-            }
-
-            .logo-icon {
-                width: 25px;
-                height: 25px;
-            }
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-
-        .intro-title {
+        .title-about {
             background-color: #0b2619; 
             box-shadow: 3px 3px 5px rgb(28, 28, 28);
             border-radius: 5px;
-            padding: 2rem 3rem;
+            padding: clamp(1.5rem, 4vw, 2rem) clamp(2rem, 5vw, 3rem);
             text-align: center;
             max-width: 600px;
-            width: 80%;
+            width: 90%;
             margin-bottom: 3rem;
+            color:#fff;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight:bold;
         }
-
-        .intro-title-text {
-            color: #ffffff;
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 0;
-        }
-
-        .card-vid-container {
-            display: flex;
+        
+        .about-container{
+            display:flex;
             justify-content: center;
             align-items: stretch; 
-            gap: 3rem;
-            max-width: 1200px;
-            width: 90%;
+            gap: clamp(1.5rem, 3vw, 3rem);
+            width: 95%;
             flex-wrap: wrap;
         }
-
-        .text-card {
+        
+        .about-card{
             background-color:  rgba(255, 255, 255, 0.171);
             border-radius: 15px;
-            padding: 2rem;
+            padding: clamp(1rem, 3vw, 2rem);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             flex: 1;
-            min-width: 300px;
+            min-width: 280px;
             max-width: 400px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
-
-        .text-card h3 {
-            color: #a8e6a3;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .text-card p {
-            color: #ffffff;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            text-align: center;
-            margin: 0;
-        }
-
-        .video-card {
+        
+        .video-card{
             background-color:  rgba(255, 255, 255, 0.171);
             border-radius: 15px;
-            padding: 2rem;
+            padding: clamp(1rem, 3vw, 2rem);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             flex: 1;
-            min-width: 300px;
+            min-width: 280px;
             max-width: 600px;
             display: flex;
             flex-direction: column;
         }
-
-        .video-card h3 {
-            color: #a8e6a3;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
+        
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%; 
-            height: 0;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -285,52 +170,69 @@
 
         .video-wrapper iframe {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             border: none;
         }
         
+        .video-card h3{
+            text-align:center;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight:bold;
+            color:#fff;
+            margin-top: 0;
+        }
+        
+        .about-card h3{
+            text-align:center;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight:bold;
+            color:#a8e6a3;
+            margin-top: 0;
+        }
+        
+        .about-card p{
+            color: #ffffff;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            line-height: 1.6;
+            text-align: center;
+            margin: 0;
+        }
+        
+        .app-title h3{
+            text-align:center;
+            padding:1rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color:#12442C;
+            margin: 0;
+        }
+        
         .app-section{
-            background-color: #dfdede;
             min-height: 100vh;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2rem 0;
+            padding: 2rem 1rem;
+            background-color: #DFDEDE;
         }
         
-        .card-links-container {
-            display: flex;
+        .card-links-container{
+            display:flex;
             justify-content: center;
             align-items: stretch; 
-            gap: 3rem;
-            max-width: 1200px;
-            width: 90%;
+            gap: clamp(1.5rem, 3vw, 3rem);
+            width: 95%;
             flex-wrap: wrap;
         }
         
-        .app-title {
-            text-align: center;
-            width: 100%;
-        }
-        
-        .app-title-text {
-            color: #12442C;
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 0;
-        }
-        
-        .download-card {
-            background-color: #39604D;
+        .download-card{
+            background-color:  #39604D;
             border-radius: 15px;
-            padding: 2rem;
+            padding: clamp(1rem, 3vw, 2rem);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             flex: 1;
-            min-width: 300px;
+            min-width: 280px;
             max-width: 600px;
             display: flex;
             flex-direction: column;
@@ -338,14 +240,27 @@
             justify-content: center;
         }
         
-        .download-card h3 {
-            color: #ffffff;
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            text-align: center;
+        .download-card h3{
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight:bold;
+            color:#fff;
+            margin-top: 0;
         }
         
-        .download-buttons {
+        .link-text-card{
+            border-radius: 15px;
+            padding: clamp(1rem, 3vw, 2rem);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #fff;
+        }
+        
+        .download-buttons{
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
@@ -353,24 +268,25 @@
             max-width: 300px;
         }
         
-        .store-button {
+        .store-button{
             display: flex;
             align-items: center;
             background-color: #ffffff;
             border: none;
             border-radius: 12px;
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1rem;
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         
-        .store-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        .store-icon{
+            width: 35px;
+            height: 35px;
+            margin-right: 1rem;
         }
         
-        .store-button.apple {
+        .store-button.apple{
             background-color: #000000;
             color: #ffffff;
         }
@@ -380,126 +296,138 @@
             color: #000000;
         }
         
-        .store-icon {
-            width: 40px;
-            height: 40px;
-            margin-right: 1rem;
-        }
-        
         .store-text {
             display: flex;
             flex-direction: column;
-            text-align: left;
+            font-size: 0.9rem;
+            line-height: 1.2;
         }
         
         .store-text span:first-child {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
         }
         
-        .store-text span:last-child {
-            font-size: 1.2rem;
-            font-weight: bold;
+        .link-text-card h3{
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight:bold;
+            color:#96c892;
+            margin-top: 0;
         }
         
-        .link-text-card {
-            background-color: #ffffff2c;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            flex: 1;
-            min-width: 300px;
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .link-text-card h3 {
-            color: #12442C;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .link-text-card p {
-            color: #4d4d4d;
-            font-size: 1.1rem;
+        .link-text-card p{
+            color: #2d2c2c;
+            font-size: clamp(1rem, 2vw, 1.1rem);
             line-height: 1.6;
             text-align: center;
             margin: 0;
         }
-    .footer {
-            background-color: #0b2619;
-            color: #ffffff;
-            padding: 3rem 2rem;
-            text-align: center;
+        
+        .footer {
+            background-color: #12442C;
+            padding: 2rem 0;
         }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+        
+        .footer-content{
+            align-items:center;
+            padding: 0 1rem;
+            text-align:center;
         }
-
-        .footer-section {
-            margin-bottom: 1rem;
+        
+        .footer-section{
+            margin-bottom:1rem;
         }
-
-        .footer h3 {
-            color: #a8e6a3;
+        
+        .footer-section h3{
+            color:#96c892;
             font-size: 1.5rem;
             margin-bottom: 1rem;
         }
 
-        .footer p {
-            color: #ffffff;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin: 0.5rem 0;
+        .contact-info{
+            color: #fff;
+            justify-content:center;
+            gap:2rem;
+            flex-wrap:wrap;
         }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
+        
+        .footer-links{
+            display:flex;
+            justify-content:center;
+            gap: clamp(1rem, 2.5vw, 2.5rem);
             flex-wrap: wrap;
+            margin-top:1rem
         }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap:2.5rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
+        
         .footer-links a {
-            color: #a8e6a3;
+            color: #ffffff;
             text-decoration: none;
             transition: color 0.3s ease;
+            white-space: nowrap;
         }
-
-        .footer-links a:hover {
-            color: #ffffff;
-        }
-
-        .copyright {
+        
+        .copyright{
             margin-top: 2rem;
             padding-top: 2rem;
-            border-top: 1px solid #2d4a3a;
-            color: #a8e6a3;
+            border-top: 3px solid #9db7a9;
+            color: #fff;
             font-size: 0.9rem;
         }
-
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                margin: 10px 10px;
+                padding: 0.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links li a {
+                display: block;
+                padding: 0.8rem;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+        }
         
     </style>
 </head>
 <body>
-     <nav class="navbar">
+    <nav class="navbar">
         <div class="logo-container">
-            <img src="photo_brainstorming/poker-cards (2).png" alt="Solitaire Icon" class="logo-icon">
+            <img src="/photo_brainstorming/poker-cards (2).png" alt="card-game" class="logo-image">
             <div class="logo-text">Solitaire</div>
         </div>
         
@@ -516,49 +444,41 @@
             <li><a href="#">Play</a></li>
         </ul>
     </nav>
-
+    
     <section class="hero-section">
         <div class="gradient-overlay"></div>
     </section>
 
-    <section class="intro-section">
-        <div class="intro-title">
-            <h2 class="intro-title-text">
-                About The Game
-            </h2>
+    <section class="about-section">
+        <div class="title-about">
+            About the Game
         </div>
-        <div class="card-vid-container">
-            <div class="text-card">
+
+        <div class="about-container">
+            <div class="about-card">
                 <h3>Discover the World's Favorite Card Game</h3>
                 <p>Solitaire is the timeless single-player card game that has captivated millions for generations. Also known as Patience or Klondike, this classic game challenges your strategic thinking while providing a peaceful, engaging experience.</p>
             </div>
-            
             <div class="video-card">
                 <h3>How to Play</h3>
                 <div class="video-wrapper">
                     <iframe src="https://www.youtube.com/embed/7HTdpImHkSI" 
-                            title="How To Play Solitaire" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
+                            title="How To Play Solitaire"></iframe> 
                 </div>
             </div>
         </div>
     </section>
-
+    
     <section class="app-section">
         <div class="app-title">
-            <h2 class="app-title-text">
-                Download The Game
-            </h2>
-            <br><br>
+            <h3>Download the Game</h3>
         </div>
         <div class="card-links-container">
             <div class="download-card">
                 <h3>Get the App</h3>
                 <div class="download-buttons">
                     <a href="#" class="store-button apple">
-                        <img src="/photo_brainstorming/app-store (1).png" alt="Apple" class="store-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/179/179309.png" alt="Apple" class="store-icon">
                         <div class="store-text">
                             <span>Download on the</span>
                             <span>App Store</span>
@@ -566,7 +486,7 @@
                     </a>
                     
                     <a href="#" class="store-button google">
-                        <img src="/photo_brainstorming/google-play.png" alt="Google Play" class="store-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/300/300218.png" alt="Google Play" class="store-icon">
                         <div class="store-text">
                             <span>Get it on</span>
                             <span>Google Play</span>
@@ -587,12 +507,15 @@
             </div>
         </div>
     </section>
+
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <div class="contact-info">
-                        support@solitairegame.com
+                    <div class="contact-item">
+                        <span>support@solitairegame.com</span>
+                    </div>
                 </div>
             </div>
 
@@ -613,29 +536,15 @@
             </div>
         </div>
     </footer>
-
+    
     <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-
-        mobileMenu.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navLinks.classList.toggle('active');
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
         });
-
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                navLinks.classList.remove('active');
+            link.addEventListener('click', function() {
+                document.getElementById('nav-links').classList.remove('active');
             });
-        });
-
-        document.addEventListener('click', function(event) {
-            const isClickInsideNav = document.querySelector('.navbar').contains(event.target);
-            if (!isClickInsideNav && navLinks.classList.contains('active')) {
-                mobileMenu.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
         });
     </script>
 </body>
