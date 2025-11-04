@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solitaire Game</title>
+    <style>
+   
+        * {
+            box-sizing: border-box;
+        }
+        
+        body{
+            margin:0;
+            background-color: #12442C;
+            font-family: Arial, sans-serif;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) 
+                     env(safe-area-inset-bottom) env(safe-area-inset-left);
+        }
+        .hero-section{
+          background-size: cover; 
+          background-repeat: no-repeat;
+          background-position: center center; 
+          height: 100vh;
+          width: 100%;
+          position: relative;
+          backdrop-filter: blur(10px);
+        }
+        
+        .gradient-overlay{
+            position:absolute;
+            top:0;
+            left:0;
+            background: linear-gradient(to bottom, 
+            rgba(0,0,0, 0.7)0%, 
+            rgba(0,0,0,0.4)50%,
+            rgba(0,0,0, 0)100%);
+            z-index:10;
+            width:100%;
+            height:500px;
+        }
+        
+        .navbar {
+            position:fixed;
+            display:flex;
+            z-index:30;
+            top:0;
+            left:0;
+            right:0;
+            background-color:#12442c4b;
+            border-bottom: 2px solid #fff;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            margin: 15px 15px;
+            backdrop-filter: blur(10px);
+            justify-content:space-between;
+            align-items:center;
+            flex-wrap: wrap;
+        }
+        
+        .logo-container{
+            display:flex;
+            align-items:center;
+            gap:0.5rem;
+        }
+        
+        .logo-image{
+            width: 50px;
+            height: 50px;
+        }
+        
+        .logo-text{
+            color:#fff;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight:bold;
+            padding:0;
+        }
+        
+        .nav-links{
+            list-style:none;
+            display:flex;
+            gap: clamp(1rem, 3vw, 3rem);
+            font-weight:bold;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li a{
+            color:#fff;
+            text-decoration:none;
+            transition: color 0.3s ease;
+            padding:0.5rem 0.8rem;
+            border-radius:4px;
+            white-space: nowrap;
+        }
+
+        .nav-links li a:hover{
+            color: #4c674a;
+            background-color: rgb(255, 255, 255);
+        }
+        
+        
+
+        
+        .footer-content{
+            align-items:center;
+            padding: 0 1rem;
+            text-align:center;
+        }
+
+        
+        
+        
+        .copyright{
+            margin-top: 2rem;
+            padding-top: 2rem;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                margin: 10px 10px;
+                padding: 0.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links li a {
+                display: block;
+                padding: 0.8rem;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="/photo_brainstorming/poker-cards (2).png" alt="card-game" class="logo-image">
+            <div class="logo-text">Solitaire</div>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#">Home</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero-section">
+        <div class="gradient-overlay"></div>
+    </section>
+
+   
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="copyright">
+                <p>&copy; 2025 Solitaire Game. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('nav-links').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
