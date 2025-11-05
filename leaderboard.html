@@ -139,6 +139,7 @@
             display: flex;
             justify-content: center;
             align-items: stretch;
+            gap: clamp(2rem, 4vw, 4rem);
             width: 95%;
             max-width: 1200px;
             flex-wrap: wrap;
@@ -183,8 +184,57 @@
         .leaderboard-table tr:hover {
             background-color: #e9f7e9;
         }
-        
-        
+        .add-score{
+            background-color:#fff;
+            border-radius: 15px;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            display:flex;
+            flex:1;
+            flex-direction:column;
+            justify-content:center;
+            min-width: 320px;
+            max-width: 450px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .add-score h2{
+            color:#12442C;
+            font-size:1.8rem;
+            margin-bottom:1.5rem;
+        }
+        .score-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .form-player {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .form-player label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #12442C;
+        }
+        .form-player input {
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .submit-btn{
+            background-color:#12442C;
+            color:white;
+            padding:1rem;
+            border:none;
+            border-radius:15px;
+            font-size:1rem;
+        }
+
+        .submit-btn:hover {
+            background-color: #0d331f;
+        }
         
     </style>
 </head>
@@ -237,7 +287,17 @@
                     </tbody>
                 </table>
             </div>
-            </div></div>
+            <div class="add-score">
+                <h2>Generating the score</h2>
+                <form class="score-form">
+                    <div class="form-player">
+                        <label for="player-name">Your Name</label>
+                        <input type="text" id="player-name" placeholder="Enter your name" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Generating your score</button>
+                </form>
+            </div>
+            </div>
     </section>
 
    
