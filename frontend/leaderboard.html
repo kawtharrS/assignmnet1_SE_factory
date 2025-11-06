@@ -299,11 +299,15 @@
             x.preventDefault();
 
             const playerName = document.getElementById("player-name").value.trim();
-
+            const specialChars = /^[A-Za-z0-9_ ]+$/;
             if (playerName === ""){
                 alert(
                     "please enter your name"
                 );
+                return;
+            }
+            if (!specialChars.test(playerName)) {
+                alert("Name can only contain letters, numbers, spaces, and underscores.");
                 return;
             }
             axios.post("http://localhost:8080/assignment_project/backend/apis/add_score.php", {name:playerName    
@@ -332,9 +336,7 @@
                     const players = response.data;
                     const tableBody = document.getElementById("leaderboard-body");
                     tableBody.innerHTML="";
-
-                    players.sort((a,b) => b.score - a.score)
-                           .forEach((player, index)=>{
+                        players.forEach((player, index)=>{
                                 const durationfrmt = formatDuration(player.duration);
 
                                 const row = `

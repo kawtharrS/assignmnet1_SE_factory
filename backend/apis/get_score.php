@@ -13,7 +13,7 @@ if(isset($_GET["id"]))
 else 
     $id=-1;
 
-$sql = "SELECT * FROM players";
+$sql = "SELECT * FROM players ORDER BY score DESC limit 5 ";
 $query = $mysql->prepare($sql);
 $query->execute();
 
