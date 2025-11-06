@@ -15,23 +15,18 @@
 
     $sql = "INSERT INTO players (name, score, duration) VALUES (?,?,?)";
     $query=$mysql->prepare($sql);
-    $query->bind_param("sii", $name, $score, $duration);
+    $query->bind_param("sii", $name, $score, $duration); // sii: string int int 
 
 
     if ($query->execute()) {
     echo json_encode(["status" => "success"]);
     } else {
-        echo json_encode(["status" => "error"]);
+        if ($mysql->errno === 1062) {
+            echo json_encode(["status" => "duplicate"]);
+        } else {
+            echo json_encode(["status" => "error"]);
+        }
     }
 
-    $check = $mysql->prepare("SELECT id FROM player WHERE name = ?");
-    $check->bind_param("s", $name);
-    $check->execute();
-    $result = $check->get_result();
-
-    if ($result->num_rows > 0) {
-        echo json_encode(["status" => "duplicate"]);
-        exit;
-    }
 
 ?>

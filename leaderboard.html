@@ -267,24 +267,7 @@
                         </tr>
                     </thead>
                     <tbody id="leaderboard-body">
-                        <tr>
-                            <td>1</td>
-                            <td>Kawthar</td>
-                            <td>1200</td>
-                            <td>2:45</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Fatima</td>
-                            <td>1000</td>
-                            <td>3:00</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Aya</td>
-                            <td>800</td>
-                            <td>4:00</td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -327,15 +310,25 @@
             axios.post("http://localhost:8080/assignment_project/add_score.php", {name:playerName,
                                                                                   score:playerScore,
                                                                                   duration:playerDuration     
-            })
-                 .then(response => {
-                    console.log(response);
-                 })
+            }).then(response => {
+                console.log(response);
+                if (response.data.status === "duplicate") {
+                    alert("You already have a score!");
+                    return;
+                }
+
+                alert("Score submitted!");
+                loadLeaderboard(); 
+                })
+                 
                 .catch(error => {
                 console.error("Error adding score:", error);
                 alert("Failed to add your score. Try again.");
             });
         });
+
+
+        
     </script>
 </body>
 
