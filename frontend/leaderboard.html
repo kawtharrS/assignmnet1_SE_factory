@@ -299,8 +299,6 @@
             x.preventDefault();
 
             const playerName = document.getElementById("player-name").value.trim();
-            const playerScore = Math.floor(Math.random() * 1000);
-            const playerDuration=Math.floor(Math.random() * 896) + 5; // from 5sec to 900sec (15 mins)
 
             if (playerName === ""){
                 alert(
@@ -308,9 +306,7 @@
                 );
                 return;
             }
-            axios.post("http://localhost:8080/assignment_project/backend/apis/add_score.php", {name:playerName,
-                                                                                  score:playerScore,
-                                                                                  duration:playerDuration     
+            axios.post("http://localhost:8080/assignment_project/backend/apis/add_score.php", {name:playerName    
             }).then(response => {
                 console.log(response);
                 if (response.data.status === "duplicate") {
@@ -332,7 +328,7 @@
             axios.get("http://localhost:8080/assignment_project/backend/apis/get_score.php")
             .then(
                 response => {
-                    console.log(response) // the output is an array
+                    console.log(response) 
                     const players = response.data;
                     const tableBody = document.getElementById("leaderboard-body");
                     tableBody.innerHTML="";
