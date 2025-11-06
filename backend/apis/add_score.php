@@ -11,8 +11,8 @@
 
 
     $name=$data["name"];
-    $score=$data["score"];
-    $duration=$data["duration"];
+    $score=rand(1, 1000);
+    $duration=rand(5, 900);
 
 
     $sql = "INSERT INTO players (name, score, duration) VALUES (?,?,?)";
