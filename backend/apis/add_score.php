@@ -8,16 +8,19 @@
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Content-Type: application/json; charset=UTF-8");
 
-
+    if (!$data || !isset($data["name"])) {
+        die("No data received");
+    }
 
     $name=$data["name"];
-    $score=$data["score"];
-    $duration=$data["duration"];
-
+    $score=rand(1, 1000);
+    $duration=rand(5, 900);
+    $penalty=floor($duration/10) * 2;
+    $fscore = max(0, $score - $penalty);
 
     $sql = "INSERT INTO players (name, score, duration) VALUES (?,?,?)";
     $query=$mysql->prepare($sql);
-    $query->bind_param("sii", $name, $score, $duration); // sii: string int int 
+    $query->bind_param("sii", $name, $fscore, $duration); // sii: string int int 
 
 
     if ($query->execute()) {

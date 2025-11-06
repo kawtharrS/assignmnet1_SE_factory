@@ -299,18 +299,18 @@
             x.preventDefault();
 
             const playerName = document.getElementById("player-name").value.trim();
-            const playerScore = Math.floor(Math.random() * 1000);
-            const playerDuration=Math.floor(Math.random() * 896) + 5; // from 5sec to 900sec (15 mins)
-
+            const specialChars = /^[A-Za-z0-9_ ]+$/;
             if (playerName === ""){
                 alert(
                     "please enter your name"
                 );
                 return;
             }
-            axios.post("http://localhost:8080/assignment_project/backend/apis/add_score.php", {name:playerName,
-                                                                                  score:playerScore,
-                                                                                  duration:playerDuration     
+            if (!specialChars.test(playerName)) {
+                alert("Name can only contain letters, numbers, spaces, and underscores.");
+                return;
+            }
+            axios.post("http://localhost:8080/assignment_project/backend/apis/add_score.php", {name:playerName    
             }).then(response => {
                 console.log(response);
                 if (response.data.status === "duplicate") {
@@ -332,13 +332,11 @@
             axios.get("http://localhost:8080/assignment_project/backend/apis/get_score.php")
             .then(
                 response => {
-                    console.log(response) // the output is an array
+                    console.log(response) 
                     const players = response.data;
                     const tableBody = document.getElementById("leaderboard-body");
                     tableBody.innerHTML="";
-
-                    players.sort((a,b) => b.score - a.score)
-                           .forEach((player, index)=>{
+                        players.forEach((player, index)=>{
                                 const durationfrmt = formatDuration(player.duration);
 
                                 const row = `
