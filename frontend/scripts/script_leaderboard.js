@@ -46,10 +46,7 @@ async function getScores() {
         }
     } catch (error) {
         console.error("ERROR fetching scores:", error);
-        // Check if axios is available
-        if (typeof axios === 'undefined') {
-            console.error("Axios is not defined! Check if the script is loaded properly.");
-        }
+
     }
 }
 
@@ -85,9 +82,7 @@ async function addScore(x) {
         
         if (response.data.success) {
             alert("Your Score is Submitted Successfully!");
-            // Clear the input field
             document.getElementById("player-name").value = "";
-            // Refresh the leaderboard
             getScores();
         } else {
             alert("Failed to submit score. Please try again.");
