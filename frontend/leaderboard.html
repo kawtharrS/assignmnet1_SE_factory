@@ -7,56 +7,58 @@
     <link rel="stylesheet" href="./styles/style_leaderboard.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo-container">
-            <img src="../photo_brainstorming/poker-cards (2).png" alt="card-game" class="logo-image">
-            <div class="logo-text">Solitaire</div>
-        </div>
+    <div class="grid-container">
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="../photo_brainstorming/poker-cards (2).png" alt="card-game" class="logo-image">
+                <div class="logo-text">Solitaire</div>
+            </div>
+            
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
         
-        
-        <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Home</a></li>
-        </ul>
-    </nav>
-    
-    <section class="hero-section">
-        <div class="leaderboard">
-        <h2>Top Players</h2>
-        <div class="players-class">
-            <div class="tbl-class">
-                <table class="leaderboard-table">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Player</th>
-                            <th>Score</th>
-                            <th>Duration</th>
-                        </tr>
-                    </thead>
-                    <tbody id="leaderboard-body">
-                        
-                    </tbody>
-                </table>
-            </div>
-            <div class="add-score">
-                <h2>Generating the score</h2>
-                <div class="score-form">
-                    <div class="form-player">
-                        <label for="player-name">Your Name</label>
-                        <input type="text" id="player-name" placeholder="Enter your name" required>
-                    </div>
-                    <button type="click" class="submit-btn" id="score-id">Generating your score</button>
-            </div>
-            </div>
-    </section>
+        <section class="hero-section">
+            <div class="leaderboard">
+            <h2>Top Players</h2>
+            <div class="players-class">
+                <div class="tbl-class">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Player</th>
+                                <th>Score</th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-body">
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <div class="add-score">
+                    <h2>Generating the score</h2>
+                    <div class="score-form">
+                        <div class="form-player">
+                            <label for="player-name">Your Name</label>
+                            <input type="text" id="player-name" placeholder="Enter your name" required>
+                        </div>
+                        <button type="click" class="submit-btn" id="score-id">Generating your score</button>
+                </div>
+                </div>
+        </section>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="copyright">
-                <p>&copy; 2025 Solitaire Game. All rights reserved.</p>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>&copy; 2025 Solitaire Game. All rights reserved.</p>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+</div>
     <script src="../frontend/scripts/axios.min.js" defer></script>
     <script src="./scripts/script_leaderboard.js"></script>
 </body>
