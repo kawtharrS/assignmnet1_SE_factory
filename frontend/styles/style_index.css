@@ -85,7 +85,7 @@ body {
 .hero-section {
     grid-area: hero;
     background-image: url('/photo_brainstorming/28ebbccde6cc192a1cfadf20a16ea922-Photoroom.png');
-    background-size: 100% auto; 
+    background-size: 100% 100%; 
     background-repeat: no-repeat;
     background-position: center center; 
     height: 100vh;
