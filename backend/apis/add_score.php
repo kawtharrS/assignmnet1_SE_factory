@@ -17,12 +17,11 @@
     
     $score=rand(1, 1000);
     $duration=rand(5, 900);
-    $penalty=floor($duration/10) * 2; // for each 10 sec remove 2 points
-    $fscore = max(0, $score - $penalty);
 
     $sql = "INSERT INTO players (name, score, duration) VALUES (?,?,?)";
     $query=$mysql->prepare($sql);
-    $query->bind_param("sii", $name, $fscore, $duration); // sii: string int int 
+    $query->bind_param("sii", $name, $score, $duration); // sii: string int int 
+    $query->execute();
 
 
     $response = [];

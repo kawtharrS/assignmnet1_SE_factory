@@ -2,7 +2,7 @@
 
     include("../connection/connection.php");
 
-    $sql = "SELECT * FROM players ORDER BY score DESC limit 5 ";
+    $sql = "SELECT * FROM players ORDER BY score DESC, duration ASC limit 5 ";
     $query = $mysql->prepare($sql);
     $query->execute();
 
