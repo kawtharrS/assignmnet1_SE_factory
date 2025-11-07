@@ -1,21 +1,19 @@
 <?php
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: Content-Type");
-    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-    header("Content-Type: application/json; charset=UTF-8");
 
-include("../connection/connection.php");
+    include("../connection/connection.php");
 
-$sql = "SELECT * FROM players ORDER BY score DESC limit 5 ";
-$query = $mysql->prepare($sql);
-$query->execute();
+    $sql = "SELECT * FROM players ORDER BY score DESC limit 5 ";
+    $query = $mysql->prepare($sql);
+    $query->execute();
 
-$array = $query->get_result();
-$response = [];
-while ($article = $array->fetch_assoc()){
-    $response[] =$article;
-}
-echo json_encode($response);
+    $array = $query->get_result();
+    $response = [];
+    $response["success"] = true;
+    $response["data"] = [];
+    while ($article = $array->fetch_assoc()){
+        $response["data"][] = $article;
+    }
+    echo json_encode($response);
 
 
 ?>
