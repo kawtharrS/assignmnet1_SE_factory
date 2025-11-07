@@ -1,0 +1,233 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #12442C;
+    font-family: Arial, sans-serif;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) 
+             env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'navbar'
+        'leaderboard'
+        'footer';
+    gap: 0;
+}
+
+.navbar {
+    grid-area: navbar;
+    position: fixed;
+    display: flex;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #12442c4b;
+    border-bottom: 2px solid #fff;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin: 15px 15px;
+    backdrop-filter: blur(10px);
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+}
+
+.logo-text {
+    color: #fff;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: bold;
+    padding: 0;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: clamp(1rem, 3vw, 3rem);
+    font-weight: bold;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.nav-links li a:hover {
+    color: #4c674a;
+    background-color: rgb(255, 255, 255);
+}
+
+.leaderboard {
+    grid-area: leaderboard;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 100px 20px 50px;
+    text-align: center;
+}
+
+.leaderboard h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.players-class {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    width: 95%;
+    max-width: 1200px;
+}
+
+.tbl-class {
+    border-radius: 15px;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.1rem;
+}
+
+.leaderboard-table th {
+    background-color: #12442C;
+    color: white;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.leaderboard-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.leaderboard-table tr:nth-child(even) {
+    background-color: #d4e8d3;
+}
+
+.leaderboard-table tr:hover {
+    background-color: #e9f7e9;
+}
+
+.add-score {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.add-score h2 {
+    color: #12442C;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.score-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-player {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-player label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #12442C;
+}
+
+.form-player input {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.submit-btn {
+    background-color: #12442C;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: #0d331f;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+.footer-content {
+    align-items: center;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.copyright {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+    .grid-container {
+        grid-template-areas:
+            'navbar navbar navbar'
+            'leaderboard leaderboard leaderboard'
+            'footer footer footer';
+    }
+    
+    .players-class {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+@media (min-width: 1200px) {
+    .players-class {
+        grid-template-columns: 3fr 2fr;
+    }
+}
