@@ -8,10 +8,6 @@
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Content-Type: application/json; charset=UTF-8");
 
-    if (!$data || !isset($data["name"])) {
-        die("No data received");
-    }
-
     $name=$data["name"];
     $score=rand(1, 1000);
     $duration=rand(5, 900);

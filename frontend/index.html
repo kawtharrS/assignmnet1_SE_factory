@@ -4,425 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solitaire Game</title>
-    <style>
-   
-        * {
-            box-sizing: border-box;
-        }
-        
-        body{
-            margin:0;
-            background-color: #12442C;
-            font-family: Arial, sans-serif;
-            padding: env(safe-area-inset-top) env(safe-area-inset-right) 
-                     env(safe-area-inset-bottom) env(safe-area-inset-left);
-        }
-        
-        .hero-section{
-          background-image: url('../photo_brainstorming/28ebbccde6cc192a1cfadf20a16ea922-Photoroom.png');
-          background-size: cover; 
-          background-repeat: no-repeat;
-          background-position: center center; 
-          height: 100vh;
-          width: 100%;
-          position: relative;
-          backdrop-filter: blur(10px);
-        }
-        
-        .gradient-overlay{
-            position:absolute;
-            top:0;
-            left:0;
-            background: linear-gradient(to bottom, 
-            rgba(0,0,0, 0.7)0%, 
-            rgba(0,0,0,0.4)50%,
-            rgba(0,0,0, 0)100%);
-            z-index:10;
-            width:100%;
-            height:500px;
-        }
-        
-        .navbar {
-            position:fixed;
-            display:flex;
-            z-index:30;
-            top:0;
-            left:0;
-            right:0;
-            background-color:#12442c4b;
-            border-bottom: 2px solid #fff;
-            border-radius: 5px;
-            padding: 0.5rem 1rem;
-            margin: 15px 15px;
-            backdrop-filter: blur(10px);
-            justify-content:space-between;
-            align-items:center;
-            flex-wrap: wrap;
-        }
-        
-        .logo-container{
-            display:flex;
-            align-items:center;
-            gap:0.5rem;
-        }
-        
-        .logo-image{
-            width: 50px;
-            height: 50px;
-        }
-        
-        .logo-text{
-            color:#fff;
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            font-weight:bold;
-            padding:0;
-        }
-        
-        .nav-links{
-            list-style:none;
-            display:flex;
-            gap: clamp(1rem, 3vw, 3rem);
-            font-weight:bold;
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            margin: 0;
-            padding: 0;
-        }
-        
-        .nav-links li a{
-            color:#fff;
-            text-decoration:none;
-            transition: color 0.3s ease;
-            padding:0.5rem 0.8rem;
-            border-radius:4px;
-            white-space: nowrap;
-        }
-
-        .nav-links li a:hover{
-            color: #4c674a;
-            background-color: rgb(255, 255, 255);
-        }
-        
-        .about-section{
-            min-height: 100vh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem 1rem;
-        }
-
-        .title-about {
-            background-color: #0b2619; 
-            box-shadow: 3px 3px 5px rgb(28, 28, 28);
-            border-radius: 5px;
-            padding: clamp(1.5rem, 4vw, 2rem) clamp(2rem, 5vw, 3rem);
-            text-align: center;
-            max-width: 600px;
-            width: 90%;
-            margin-bottom: 3rem;
-            color:#fff;
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            font-weight:bold;
-        }
-        
-        .about-container{
-            display:flex;
-            justify-content: center;
-            align-items: stretch; 
-            gap: clamp(1.5rem, 3vw, 3rem);
-            width: 95%;
-            flex-wrap: wrap;
-        }
-        
-        .about-card{
-            background-color:  rgba(255, 255, 255, 0.171);
-            border-radius: 15px;
-            padding: clamp(1rem, 3vw, 2rem);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            flex: 1;
-            min-width: 280px;
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .video-card{
-            background-color:  rgba(255, 255, 255, 0.171);
-            border-radius: 15px;
-            padding: clamp(1rem, 3vw, 2rem);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            flex: 1;
-            min-width: 280px;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; 
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            flex-grow: 1;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .video-card h3{
-            text-align:center;
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight:bold;
-            color:#fff;
-            margin-top: 0;
-        }
-        
-        .about-card h3{
-            text-align:center;
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight:bold;
-            color:#a8e6a3;
-            margin-top: 0;
-        }
-        
-        .about-card p{
-            color: #ffffff;
-            font-size: clamp(1rem, 2vw, 1.1rem);
-            line-height: 1.6;
-            text-align: center;
-            margin: 0;
-        }
-        
-        .app-title h3{
-            text-align:center;
-            padding:1rem;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color:#12442C;
-            margin: 0;
-        }
-        
-        .app-section{
-            min-height: 100vh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem 1rem;
-            background-color: #DFDEDE;
-        }
-        
-        .card-links-container{
-            display:flex;
-            justify-content: center;
-            align-items: stretch; 
-            gap: clamp(1.5rem, 3vw, 3rem);
-            width: 95%;
-            flex-wrap: wrap;
-        }
-        
-        .download-card{
-            background-color:  #39604D;
-            border-radius: 15px;
-            padding: clamp(1rem, 3vw, 2rem);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            flex: 1;
-            min-width: 280px;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .download-card h3{
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight:bold;
-            color:#fff;
-            margin-top: 0;
-        }
-        
-        .link-text-card{
-            border-radius: 15px;
-            padding: clamp(1rem, 3vw, 2rem);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            flex: 1;
-            min-width: 280px;
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: #fff;
-        }
-        
-        .download-buttons{
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            width: 100%;
-            max-width: 300px;
-        }
-        
-        .store-button{
-            display: flex;
-            align-items: center;
-            background-color: #ffffff;
-            border: none;
-            border-radius: 12px;
-            padding: 0.8rem 1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .store-icon{
-            width: 35px;
-            height: 35px;
-            margin-right: 1rem;
-        }
-        
-        .store-button.apple{
-            background-color: #000000;
-            color: #ffffff;
-        }
-        
-        .store-button.google {
-            background-color: #ffffff;
-            color: #000000;
-        }
-        
-        .store-text {
-            display: flex;
-            flex-direction: column;
-            font-size: 0.9rem;
-            line-height: 1.2;
-        }
-        
-        .store-text span:first-child {
-            font-size: 0.7rem;
-        }
-        
-        .link-text-card h3{
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight:bold;
-            color:#96c892;
-            margin-top: 0;
-        }
-        
-        .link-text-card p{
-            color: #2d2c2c;
-            font-size: clamp(1rem, 2vw, 1.1rem);
-            line-height: 1.6;
-            text-align: center;
-            margin: 0;
-        }
-        
-        .footer {
-            background-color: #12442C;
-            padding: 2rem 0;
-        }
-        
-        .footer-content{
-            align-items:center;
-            padding: 0 1rem;
-            text-align:center;
-        }
-        
-        .footer-section{
-            margin-bottom:1rem;
-        }
-        
-        .footer-section h3{
-            color:#96c892;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info{
-            color: #fff;
-            justify-content:center;
-            gap:2rem;
-            flex-wrap:wrap;
-        }
-        
-        .footer-links{
-            display:flex;
-            justify-content:center;
-            gap: clamp(1rem, 2.5vw, 2.5rem);
-            flex-wrap: wrap;
-            margin-top:1rem
-        }
-        
-        .footer-links a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            white-space: nowrap;
-        }
-        
-        .copyright{
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 3px solid #9db7a9;
-            color: #fff;
-            font-size: 0.9rem;
-        }
-        
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 5px;
-        }
-        
-        .menu-toggle span {
-            height: 3px;
-            width: 25px;
-            background: #fff;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-        
-        @media (max-width: 768px) {
-            .navbar {
-                margin: 10px 10px;
-                padding: 0.5rem;
-            }
-            
-            .nav-links {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                gap: 0.5rem;
-                margin-top: 1rem;
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .nav-links li a {
-                display: block;
-                padding: 0.8rem;
-            }
-            
-            .menu-toggle {
-                display: flex;
-            }
-            
-        }
-        
-    </style>
+    <link rel="stylesheet" href="./styles/style_index.css">
 </head>
 <body>
     <nav class="navbar">
@@ -438,18 +20,19 @@
         </div>
         
         <ul class="nav-links" id="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="#hero-section">Home</a></li>
+            <li><a href="#about-section">About</a></li>
+            <li><a href="#app-section">Play</a></li>
             <li><a href="leaderboard.html">Leaderboard</a></li>
-            <li><a href="#">Play</a></li>
+            <li><a href="#footer">Contact</a></li>
         </ul>
     </nav>
     
-    <section class="hero-section">
+    <section class="hero-section" id="hero-section">
         <div class="gradient-overlay"></div>
     </section>
 
-    <section class="about-section">
+    <section class="about-section" id="about-section">
         <div class="title-about">
             About the Game
         </div>
@@ -469,7 +52,7 @@
         </div>
     </section>
     
-    <section class="app-section">
+    <section class="app-section" id="app-section">
         <div class="app-title">
             <h3>Download the Game</h3>
         </div>
@@ -477,7 +60,7 @@
             <div class="download-card">
                 <h3>Get the App</h3>
                 <div class="download-buttons">
-                    <a href="#" class="store-button apple">
+                    <a href="https://apps.apple.com/us/app/solitaire/id359917414" class="store-button apple">
                         <img src="https://cdn-icons-png.flaticon.com/512/179/179309.png" alt="Apple" class="store-icon">
                         <div class="store-text">
                             <span>Download on the</span>
@@ -485,7 +68,7 @@
                         </div>
                     </a>
                     
-                    <a href="#" class="store-button google">
+                    <a href="https://play.google.com/store/apps/details?id=com.mobilityware.solitaire&hl=en" class="store-button google">
                         <img src="https://cdn-icons-png.flaticon.com/512/300/300218.png" alt="Google Play" class="store-icon">
                         <div class="store-text">
                             <span>Get it on</span>
@@ -508,7 +91,7 @@
         </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer" id="footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Contact Us</h3>
@@ -522,10 +105,10 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <div class="footer-links">
-                    <a href="#">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Leaderboard</a>
-                    <a href="#">Play</a>
+                    <a href="#hero-section">Home</a>
+                    <a href="#about-section">About</a>
+                    <a href="leaderboard.html">Leaderboard</a>
+                    <a href="#app-section">Play</a>
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
                 </div>
@@ -536,16 +119,6 @@
             </div>
         </div>
     </footer>
-    
-    <script>
-        document.getElementById('mobile-menu').addEventListener('click', function() {
-            document.getElementById('nav-links').classList.toggle('active');
-        });
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                document.getElementById('nav-links').classList.remove('active');
-            });
-        });
-    </script>
+    <script src="../frontend/scripts/script.js"></script>
 </body>
 </html>
